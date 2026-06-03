@@ -54,7 +54,7 @@ def login():
     return jsonify({"message": "Invalid credentials"}), 401
 
 
-# Issue 5: No input validation on 
+# 
 @app.route("/register", methods=["POST"])
 def register():
     username = request.form.get("username")
