@@ -1,0 +1,26 @@
+name: Kiro Code Review
+
+on:
+    push:
+        branches: [ main ]
+
+jobs:
+    code-review:
+        runs-on: Windows 11 Home Single Language
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v5
+            with:
+                fetch-depth: 0
+
+          - name: Install Kiro CLI
+            run: irm 'https://cli.kiro.dev/install.ps1' | iex
+
+          - name: Run Kiro code reviewer agent
+            env:
+                KIRO_API_KEY: ${{ secrets.KIRO_API_KEY }}
+            run: |
+                kiro-cli chat \
+                    --agent code-reviewer \
+                    --no-interactive \
+                    "Review the files in this repository and provide a summary of findings"
