@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-# Issue 1: Hardcoded secret key (security vulnerability)
+# Issue 01: Hardcoded secret key (security vulnerability)
 app.secret_key = "mysecretkey123"
 
 # Issue 2: Hardcoded database path with no config management
