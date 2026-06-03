@@ -6,7 +6,7 @@ on:
 
 jobs:
     code-review:
-        runs-on: Windows 11 Home Single Language
+        runs-on: ubuntu-latest
         steps:
           - name: Checkout code
             uses: actions/checkout@v5
@@ -14,7 +14,7 @@ jobs:
                 fetch-depth: 0
 
           - name: Install Kiro CLI
-            run: irm 'https://cli.kiro.dev/install.ps1' | iex
+            run: curl -fsSL https://cli.kiro.dev/install | bash
 
           - name: Run Kiro code reviewer agent
             env:
